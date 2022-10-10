@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="875f786a-7f5b-4fcc-b5c6-bae30846b46f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/marsrover/rover/RoverLocationDataServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/marsrover/rover/RoverActiveLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/marsrover/rover/RoverMovementServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/marsrover/rover/Rover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marsrover/rover/Rover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/marsrover/rover/RoverLocationDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marsrover/rover/RoverLocationDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/marsrover/rover/RoverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/marsrover/rover/RoverTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/marsrover/rover/RoverDirectionalCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marsrover/rover/RoverDirectionalCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/marsrover/rover/RoverMovementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marsrover/rover/RoverMovementService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/marsrover/rover/RoverDirectionalCommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/marsrover/rover/RoverDirectionalCommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/marsrover/rover/RoverMessageHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/marsrover/rover/RoverMessageHandlerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,6 +50,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="marsrover.rover" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/test/java" />
@@ -58,7 +65,7 @@
       <recent name="marsrover.rover" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RoverLocationDataServiceTest.canUpdateLocationData">
+  <component name="RunManager" selected="JUnit.RoverMovementServiceTest">
     <configuration name="All in mars-rover" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mars-rover" />
       <option name="PACKAGE_NAME" value="" />
@@ -99,6 +106,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RoverMovementServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mars-rover" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marsrover.rover.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="marsrover.rover" />
+      <option name="MAIN_CLASS_NAME" value="marsrover.rover.RoverMovementServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RoverTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mars-rover" />
       <extension name="coverage">
@@ -116,6 +138,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RoverMovementServiceTest" />
         <item itemvalue="JUnit.RoverLocationDataServiceTest.canUpdateLocationData" />
         <item itemvalue="JUnit.RoverLocationDataServiceTest.canProvideDefaultCurrentLocation" />
         <item itemvalue="JUnit.RoverTest" />

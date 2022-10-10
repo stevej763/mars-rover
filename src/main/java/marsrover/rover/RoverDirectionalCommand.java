@@ -1,14 +1,14 @@
 package marsrover.rover;
 
 public enum RoverDirectionalCommand {
-    FORWARD, BACKWARDS, TURN_LEFT, TURN_RIGHT;
+    FORWARD, BACKWARD, TURN_LEFT, TURN_RIGHT;
 
     public static RoverDirectionalCommand toCommand(String command) {
         if (command.equals("FORWARD")) {
             return FORWARD;
         }
         if (command.equals("BACKWARDS")) {
-            return BACKWARDS;
+            return BACKWARD;
         }
         if (command.equals("TURN_LEFT")) {
             return TURN_LEFT;

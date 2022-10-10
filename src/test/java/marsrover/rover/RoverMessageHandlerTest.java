@@ -48,7 +48,7 @@ public class RoverMessageHandlerTest {
 
         underTest.process(roverMessageDto);
 
-        verify(rover).completeInstructions(new RoverCommands(List.of(BACKWARDS)));
+        verify(rover).completeInstructions(new RoverCommands(List.of(BACKWARD)));
     }
 
     @Test
@@ -62,9 +62,9 @@ public class RoverMessageHandlerTest {
         underTest.process(roverMessageDto);
 
         RoverCommands expected = new RoverCommands(List.of(
-                BACKWARDS,
-                BACKWARDS,
-                BACKWARDS));
+                BACKWARD,
+                BACKWARD,
+                BACKWARD));
         verify(rover).completeInstructions(expected);
     }
 
@@ -102,9 +102,9 @@ public class RoverMessageHandlerTest {
 
         RoverCommands expected = new RoverCommands(List.of(
                 FORWARD,
-                BACKWARDS,
+                BACKWARD,
                 FORWARD,
-                BACKWARDS));
+                BACKWARD));
         verify(rover).completeInstructions(expected);
     }
 }
