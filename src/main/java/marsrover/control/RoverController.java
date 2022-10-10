@@ -2,7 +2,8 @@ package marsrover.control;
 
 import marsrover.common.IllegalRoverCommandException;
 import marsrover.common.RoverCommand;
-import marsrover.common.RoverMessageDto;
+import marsrover.common.RoverInstructionsMessage;
+import marsrover.common.Sender;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -38,14 +39,14 @@ public class RoverController {
     }
 
     private void sendCommandToRover(Character[] commandArray) {
-        RoverMessageDto roverMessageDto = convertToRoverMessageDto(commandArray);
-        roverMessageSender.send(roverMessageDto);
+        RoverInstructionsMessage roverInstructionsMessage = convertToRoverMessageDto(commandArray);
+        roverMessageSender.send(roverInstructionsMessage);
     }
 
-    private RoverMessageDto convertToRoverMessageDto(Character[] commandArray) throws IllegalRoverCommandException {
+    private RoverInstructionsMessage convertToRoverMessageDto(Character[] commandArray) throws IllegalRoverCommandException {
         List<RoverCommand> roverCommands = Stream.of(commandArray)
                 .map(RoverCommand::toCommand)
                 .toList();
-        return new RoverMessageDto(roverCommands);
+        return new RoverInstructionsMessage(roverCommands);
     }
 }

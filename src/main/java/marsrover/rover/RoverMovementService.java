@@ -7,30 +7,28 @@ import marsrover.control.RoverLocationData;
 import java.util.List;
 
 import static marsrover.control.RoverCompassDirection.*;
-import static marsrover.rover.RoverDirectionalCommand.*;
 
 public class RoverMovementService {
 
     public RoverLocationData move(RoverLocationData currentLocation, RoverCommands roverCommands) {
         List<RoverDirectionalCommand> directionalCommands = roverCommands.getRoverDirectionalCommands();
 
-        RoverActiveLocation roverActiveLocation = calculateRoverLocation(directionalCommands, currentLocation);
+        RoverActiveLocation roverActiveLocation = moveRover(directionalCommands, currentLocation);
 
         RoverCoordinates updatedCoordinates = new RoverCoordinates(roverActiveLocation.getX(), roverActiveLocation.getY());
-
         return new RoverLocationData(updatedCoordinates, roverActiveLocation.getCurrentCompassDirection());
     }
 
-    private RoverActiveLocation calculateRoverLocation(List<RoverDirectionalCommand> directionalCommands, RoverLocationData startingLocation) {
+    private RoverActiveLocation moveRover(List<RoverDirectionalCommand> directionalCommands, RoverLocationData startingLocation) {
         RoverActiveLocation roverActiveLocation = new RoverActiveLocation(
                 startingLocation.getRoverXCoordinate(),
                 startingLocation.getRoverYCoordinate(),
                 startingLocation.getRoverCompassDirection());
-        directionalCommands.forEach(directionToMove -> moveRover(roverActiveLocation, directionToMove));
+        directionalCommands.forEach(directionToMove -> executeMovement(roverActiveLocation, directionToMove));
         return roverActiveLocation;
     }
 
-    private void moveRover(RoverActiveLocation roverActiveLocation, RoverDirectionalCommand directionToMove) {
+    private void executeMovement(RoverActiveLocation roverActiveLocation, RoverDirectionalCommand directionToMove) {
         switch (roverActiveLocation.getCurrentCompassDirection()) {
             case NORTH -> moveWhenFacingNorth(roverActiveLocation, directionToMove);
             case SOUTH -> moveWhenFacingSouth(roverActiveLocation, directionToMove);
@@ -40,51 +38,38 @@ public class RoverMovementService {
     }
 
     private void moveWhenFacingNorth(RoverActiveLocation roverActiveLocation, RoverDirectionalCommand directionToMove) {
-        if (directionToMove.equals(FORWARD)) {
-            roverActiveLocation.incrementYCoordinate();
-        } else if (directionToMove.equals(BACKWARD)) {
-            roverActiveLocation.decrementYCoordinate();
-        } else if (directionToMove.equals(TURN_RIGHT)) {
-            turnRoverRight(roverActiveLocation);
-        } else if (directionToMove.equals(TURN_LEFT)) {
-            turnRoverLeft(roverActiveLocation);
+        switch (directionToMove) {
+            case FORWARD -> roverActiveLocation.incrementYCoordinate();
+            case BACKWARD -> roverActiveLocation.decrementYCoordinate();
+            case TURN_RIGHT -> turnRoverRight(roverActiveLocation);
+            case TURN_LEFT -> turnRoverLeft(roverActiveLocation);
         }
     }
 
-
     private void moveWhenFacingWest(RoverActiveLocation roverActiveLocation, RoverDirectionalCommand directionToMove) {
-        if (directionToMove.equals(FORWARD)) {
-            roverActiveLocation.decrementXCoordinate();
-        } else if (directionToMove.equals(BACKWARD)) {
-            roverActiveLocation.incrementXCoordinate();
-        } else if (directionToMove.equals(TURN_RIGHT)) {
-            turnRoverRight(roverActiveLocation);
-        } else if (directionToMove.equals(TURN_LEFT)) {
-            turnRoverLeft(roverActiveLocation);
+        switch (directionToMove) {
+            case FORWARD -> roverActiveLocation.decrementXCoordinate();
+            case BACKWARD -> roverActiveLocation.incrementXCoordinate();
+            case TURN_RIGHT -> turnRoverRight(roverActiveLocation);
+            case TURN_LEFT -> turnRoverLeft(roverActiveLocation);
         }
     }
 
     private void moveWhenFacingEast(RoverActiveLocation roverActiveLocation, RoverDirectionalCommand directionToMove) {
-        if (directionToMove.equals(FORWARD)) {
-            roverActiveLocation.incrementXCoordinate();
-        } else if (directionToMove.equals(BACKWARD)) {
-            roverActiveLocation.decrementXCoordinate();
-        } else if (directionToMove.equals(TURN_RIGHT)) {
-            turnRoverRight(roverActiveLocation);
-        } else if (directionToMove.equals(TURN_LEFT)) {
-            turnRoverLeft(roverActiveLocation);
+        switch (directionToMove) {
+            case FORWARD -> roverActiveLocation.incrementXCoordinate();
+            case BACKWARD -> roverActiveLocation.decrementXCoordinate();
+            case TURN_RIGHT -> turnRoverRight(roverActiveLocation);
+            case TURN_LEFT -> turnRoverLeft(roverActiveLocation);
         }
     }
 
     private void moveWhenFacingSouth(RoverActiveLocation roverActiveLocation, RoverDirectionalCommand directionToMove) {
-        if (directionToMove.equals(FORWARD)) {
-            roverActiveLocation.decrementYCoordinate();
-        } else if (directionToMove.equals(BACKWARD)) {
-            roverActiveLocation.incrementYCoordinate();
-        } else if (directionToMove.equals(TURN_RIGHT)) {
-            turnRoverRight(roverActiveLocation);
-        } else if (directionToMove.equals(TURN_LEFT)) {
-            turnRoverLeft(roverActiveLocation);
+        switch (directionToMove) {
+            case FORWARD -> roverActiveLocation.decrementYCoordinate();
+            case BACKWARD -> roverActiveLocation.incrementYCoordinate();
+            case TURN_RIGHT -> turnRoverRight(roverActiveLocation);
+            case TURN_LEFT -> turnRoverLeft(roverActiveLocation);
         }
     }
 

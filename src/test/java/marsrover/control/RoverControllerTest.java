@@ -1,7 +1,8 @@
 package marsrover.control;
 
 import marsrover.common.RoverCommand;
-import marsrover.common.RoverMessageDto;
+import marsrover.common.RoverInstructionsMessage;
+import marsrover.common.Sender;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -77,7 +78,7 @@ public class RoverControllerTest {
 
         Boolean result = underTest.sendCommand(commandArray);
 
-        verify(roverMessageSender).send(new RoverMessageDto(List.of(FORWARD)));
+        verify(roverMessageSender).send(new RoverInstructionsMessage(List.of(FORWARD)));
         assertThat(result, is(TRUE));
     }
 
@@ -92,7 +93,7 @@ public class RoverControllerTest {
                 FORWARD, FORWARD, FORWARD, FORWARD, FORWARD,
                 FORWARD, FORWARD, FORWARD, FORWARD, FORWARD);
 
-        verify(roverMessageSender).send(new RoverMessageDto(expectedRoverCommands));
+        verify(roverMessageSender).send(new RoverInstructionsMessage(expectedRoverCommands));
         assertThat(result, is(TRUE));
     }
 
@@ -103,7 +104,7 @@ public class RoverControllerTest {
         RoverController underTest = new RoverController(DEFAULT_ROVER_LOCATION_DATA, roverMessageSender);
 
         Boolean result = underTest.sendCommand(commandArray);
-        verify(roverMessageSender).send(new RoverMessageDto(List.of(BACKWARD)));
+        verify(roverMessageSender).send(new RoverInstructionsMessage(List.of(BACKWARD)));
 
         assertThat(result, is(TRUE));
     }
@@ -118,7 +119,7 @@ public class RoverControllerTest {
         List<RoverCommand> expectedRoverCommands = List.of(
                 BACKWARD, BACKWARD, BACKWARD, BACKWARD, BACKWARD,
                 BACKWARD, BACKWARD, BACKWARD, BACKWARD, BACKWARD);
-        verify(roverMessageSender).send(new RoverMessageDto(expectedRoverCommands));
+        verify(roverMessageSender).send(new RoverInstructionsMessage(expectedRoverCommands));
 
         assertThat(result, is(TRUE));
     }
@@ -131,7 +132,7 @@ public class RoverControllerTest {
 
         Boolean result = underTest.sendCommand(commandArray);
 
-        verify(roverMessageSender).send(new RoverMessageDto(List.of(RoverCommand.TURN_LEFT)));
+        verify(roverMessageSender).send(new RoverInstructionsMessage(List.of(RoverCommand.TURN_LEFT)));
         assertThat(result, is(TRUE));
     }
 
@@ -143,7 +144,7 @@ public class RoverControllerTest {
 
         Boolean result = underTest.sendCommand(commandArray);
 
-        verify(roverMessageSender).send(new RoverMessageDto(List.of(RoverCommand.TURN_RIGHT)));
+        verify(roverMessageSender).send(new RoverInstructionsMessage(List.of(RoverCommand.TURN_RIGHT)));
         assertThat(result, is(TRUE));
     }
 

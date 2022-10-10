@@ -1,22 +1,28 @@
 package marsrover.rover;
 
-import marsrover.control.RoverLocationData;
+import marsrover.control.RoverCompassDirection;
+import marsrover.control.RoverCoordinates;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 
-public class RoverLocationUpdate {
+public class RoverLocationMessageDto {
+    private final RoverCoordinates roverCoordinates;
+    private final RoverCompassDirection roverCompassDirection;
 
-    private final RoverLocationData roverLocationData;
-
-    public RoverLocationUpdate(RoverLocationData roverLocationData) {
-        this.roverLocationData = roverLocationData;
+    public RoverLocationMessageDto(RoverCoordinates roverCoordinates, RoverCompassDirection roverCompassDirection) {
+        this.roverCoordinates = roverCoordinates;
+        this.roverCompassDirection = roverCompassDirection;
     }
 
-    public RoverLocationData getRoverLocationData() {
-        return roverLocationData;
+    public RoverCoordinates getRoverCoordinates() {
+        return roverCoordinates;
+    }
+
+    public RoverCompassDirection getRoverCompassDirection() {
+        return roverCompassDirection;
     }
 
     @Override

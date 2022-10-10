@@ -18,9 +18,11 @@ public class Rover {
 
         RoverLocationData updatedLocation = roverMovementService.move(currentLocation, roverCommands);
 
-        roverLocationDataService.updatePosition(updatedLocation);
+        RoverLocationUpdate roverLocationUpdate = new RoverLocationUpdate(updatedLocation);
 
-        return new RoverLocationUpdate(updatedLocation);
+        roverLocationDataService.updatePosition(roverLocationUpdate);
+
+        return roverLocationUpdate;
     }
 
 }

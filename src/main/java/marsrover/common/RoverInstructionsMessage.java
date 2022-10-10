@@ -7,11 +7,11 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SIMPLE_STYLE;
 
-public class RoverMessageDto {
+public class RoverInstructionsMessage {
 
     private final List<RoverCommand> commands;
 
-    public RoverMessageDto(List<RoverCommand> commands) {
+    public RoverInstructionsMessage(List<RoverCommand> commands) {
         this.commands = commands;
     }
 

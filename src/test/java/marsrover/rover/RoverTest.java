@@ -35,7 +35,7 @@ public class RoverTest {
 
 
         RoverLocationUpdate expectedRoverLocationDetails = new RoverLocationUpdate(nextLocation);
-        verify(roverLocationDataService).updatePosition(nextLocation);
+        verify(roverLocationDataService).updatePosition(expectedRoverLocationDetails);
         assertThat(result, is(expectedRoverLocationDetails));
     }
 

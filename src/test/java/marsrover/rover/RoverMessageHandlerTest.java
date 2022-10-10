@@ -1,7 +1,7 @@
 package marsrover.rover;
 
 import marsrover.common.RoverCommand;
-import marsrover.common.RoverMessageDto;
+import marsrover.common.RoverInstructionsMessage;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -16,23 +16,23 @@ public class RoverMessageHandlerTest {
 
     @Test
     public void canReceiveForwardCommand() {
-        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(RoverCommand.FORWARD));
+        RoverInstructionsMessage roverInstructionsMessage = new RoverInstructionsMessage(List.of(RoverCommand.FORWARD));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
-        underTest.process(roverMessageDto);
+        underTest.process(roverInstructionsMessage);
 
         verify(rover).completeInstructions(new RoverCommands(List.of(FORWARD)));
     }
 
     @Test
     public void canReceiveMultipleForwardCommands() {
-        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(
+        RoverInstructionsMessage roverInstructionsMessage = new RoverInstructionsMessage(List.of(
                 RoverCommand.FORWARD,
                 RoverCommand.FORWARD,
                 RoverCommand.FORWARD));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
-        underTest.process(roverMessageDto);
+        underTest.process(roverInstructionsMessage);
 
         RoverCommands expected = new RoverCommands(List.of(
                 FORWARD,
@@ -43,23 +43,23 @@ public class RoverMessageHandlerTest {
 
     @Test
     public void canReceiveReverseCommand() {
-        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(RoverCommand.BACKWARD));
+        RoverInstructionsMessage roverInstructionsMessage = new RoverInstructionsMessage(List.of(RoverCommand.BACKWARD));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
-        underTest.process(roverMessageDto);
+        underTest.process(roverInstructionsMessage);
 
         verify(rover).completeInstructions(new RoverCommands(List.of(BACKWARD)));
     }
 
     @Test
     public void canReceiveMultipleReverseCommands() {
-        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(
+        RoverInstructionsMessage roverInstructionsMessage = new RoverInstructionsMessage(List.of(
                 RoverCommand.BACKWARD,
                 RoverCommand.BACKWARD,
                 RoverCommand.BACKWARD));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
-        underTest.process(roverMessageDto);
+        underTest.process(roverInstructionsMessage);
 
         RoverCommands expected = new RoverCommands(List.of(
                 BACKWARD,
@@ -70,20 +70,20 @@ public class RoverMessageHandlerTest {
 
     @Test
     public void canReceiveTurnLeftCommand() {
-        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(RoverCommand.TURN_LEFT));
+        RoverInstructionsMessage roverInstructionsMessage = new RoverInstructionsMessage(List.of(RoverCommand.TURN_LEFT));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
-        underTest.process(roverMessageDto);
+        underTest.process(roverInstructionsMessage);
 
         verify(rover).completeInstructions(new RoverCommands(List.of(TURN_LEFT)));
     }
 
     @Test
     public void canReceiveTurnRightCommand() {
-        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(RoverCommand.TURN_RIGHT));
+        RoverInstructionsMessage roverInstructionsMessage = new RoverInstructionsMessage(List.of(RoverCommand.TURN_RIGHT));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
-        underTest.process(roverMessageDto);
+        underTest.process(roverInstructionsMessage);
 
         RoverCommands expected = new RoverCommands(List.of(TURN_RIGHT));
         verify(rover).completeInstructions(expected);
@@ -91,14 +91,14 @@ public class RoverMessageHandlerTest {
 
     @Test
     public void canReceiveMixOfForwardAndReverseCommands() {
-        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(
+        RoverInstructionsMessage roverInstructionsMessage = new RoverInstructionsMessage(List.of(
                 RoverCommand.FORWARD,
                 RoverCommand.BACKWARD,
                 RoverCommand.FORWARD,
                 RoverCommand.BACKWARD));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
-        underTest.process(roverMessageDto);
+        underTest.process(roverInstructionsMessage);
 
         RoverCommands expected = new RoverCommands(List.of(
                 FORWARD,

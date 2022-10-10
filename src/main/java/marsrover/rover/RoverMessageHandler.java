@@ -1,7 +1,8 @@
 package marsrover.rover;
 
+import marsrover.common.MessageHandler;
 import marsrover.common.RoverCommand;
-import marsrover.common.RoverMessageDto;
+import marsrover.common.RoverInstructionsMessage;
 
 import java.util.List;
 import java.util.function.Function;
@@ -14,8 +15,8 @@ public class RoverMessageHandler implements MessageHandler {
         this.rover = rover;
     }
 
-    public void process(RoverMessageDto roverMessageDto) {
-        RoverCommands roverCommands = toRoverCommands(roverMessageDto.getCommands());
+    public void process(RoverInstructionsMessage roverInstructionsMessage) {
+        RoverCommands roverCommands = toRoverCommands(roverInstructionsMessage.getCommands());
         rover.completeInstructions(roverCommands);
     }
 

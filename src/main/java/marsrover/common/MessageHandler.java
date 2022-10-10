@@ -1,4 +1,4 @@
-package marsrover.rover;
+package marsrover.common;
 
 public interface MessageHandler {
 }
