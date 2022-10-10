@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static marsrover.common.RoverCommand.BACKWARDS;
+import static marsrover.common.RoverCommand.BACKWARD;
 import static marsrover.common.RoverCommand.FORWARD;
 import static marsrover.control.RoverCompassDirection.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -103,7 +103,7 @@ public class RoverControllerTest {
         RoverController underTest = new RoverController(DEFAULT_ROVER_LOCATION_DATA, roverMessageSender);
 
         Boolean result = underTest.sendCommand(commandArray);
-        verify(roverMessageSender).send(new RoverMessageDto(List.of(BACKWARDS)));
+        verify(roverMessageSender).send(new RoverMessageDto(List.of(BACKWARD)));
 
         assertThat(result, is(TRUE));
     }
@@ -116,8 +116,8 @@ public class RoverControllerTest {
 
         Boolean result = underTest.sendCommand(commandArray);
         List<RoverCommand> expectedRoverCommands = List.of(
-                BACKWARDS, BACKWARDS, BACKWARDS, BACKWARDS, BACKWARDS,
-                BACKWARDS, BACKWARDS, BACKWARDS, BACKWARDS, BACKWARDS);
+                BACKWARD, BACKWARD, BACKWARD, BACKWARD, BACKWARD,
+                BACKWARD, BACKWARD, BACKWARD, BACKWARD, BACKWARD);
         verify(roverMessageSender).send(new RoverMessageDto(expectedRoverCommands));
 
         assertThat(result, is(TRUE));

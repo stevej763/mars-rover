@@ -7,7 +7,7 @@ public enum RoverDirectionalCommand {
         if (command.equals("FORWARD")) {
             return FORWARD;
         }
-        if (command.equals("BACKWARDS")) {
+        if (command.equals("BACKWARD")) {
             return BACKWARD;
         }
         if (command.equals("TURN_LEFT")) {

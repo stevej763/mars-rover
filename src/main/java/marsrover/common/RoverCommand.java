@@ -2,7 +2,7 @@ package marsrover.common;
 
 public enum RoverCommand {
     FORWARD,
-    BACKWARDS,
+    BACKWARD,
     TURN_LEFT,
     TURN_RIGHT;
 
@@ -11,7 +11,7 @@ public enum RoverCommand {
             return FORWARD;
         }
         if (letter == 'b') {
-            return BACKWARDS;
+            return BACKWARD;
         }
         if (letter == 'l') {
             return TURN_LEFT;

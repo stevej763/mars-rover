@@ -1,17 +1,21 @@
 package marsrover.rover;
 
+import marsrover.control.RoverCompassDirection;
+
 public class RoverActiveLocation {
 
+    private RoverCompassDirection currentCompassDirection;
     private Integer y;
     private Integer x;
 
-    public RoverActiveLocation(Integer x, Integer y) {
+    public RoverActiveLocation(Integer x, Integer y, RoverCompassDirection startingCompassDirection) {
+        this.currentCompassDirection = startingCompassDirection;
         this.x = x;
         this.y = y;
     }
 
     public void updateYCoordinate(Integer y) {
-        this.y += y;
+        this.y = y;
     }
 
     public void updateXCoordinate(Integer x) {
@@ -26,20 +30,27 @@ public class RoverActiveLocation {
         return x;
     }
 
-    public void incrementXCoordinate(Integer currentXCoordinate) {
-        updateXCoordinate(currentXCoordinate + 1);
-
+    public void incrementXCoordinate() {
+        updateXCoordinate(x + 1);
     }
 
-    public void incrementYCoordinate(Integer currentYCoordinate) {
-        updateYCoordinate(currentYCoordinate + 1);
+    public void incrementYCoordinate() {
+        updateYCoordinate(y + 1);
     }
 
-    public void decrementXCoordinate(Integer currentXCoordinate) {
-        updateXCoordinate(currentXCoordinate - 1);
+    public void decrementXCoordinate() {
+        updateXCoordinate(x - 1);
     }
 
-    public void decrementYCoordinate(Integer startingYCoordinates) {
-        updateYCoordinate(startingYCoordinates - 1);
+    public void decrementYCoordinate() {
+        updateYCoordinate(y - 1);
+    }
+
+    public RoverCompassDirection getCurrentCompassDirection() {
+        return currentCompassDirection;
+    }
+
+    public void turnRover(RoverCompassDirection roverCompassDirection) {
+        this.currentCompassDirection = roverCompassDirection;
     }
 }

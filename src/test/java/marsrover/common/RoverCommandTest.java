@@ -23,7 +23,7 @@ public class RoverCommandTest {
 
     @Test
     public void canParseAReverseCommand() {
-        assertThat(RoverCommand.toCommand('b'), is(BACKWARDS));
+        assertThat(RoverCommand.toCommand('b'), is(BACKWARD));
     }
 
     @Test

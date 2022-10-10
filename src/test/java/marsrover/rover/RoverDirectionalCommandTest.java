@@ -12,7 +12,7 @@ public class RoverDirectionalCommandTest {
     @Test
     public void canConvertToRoverDirectionalCommands() {
         assertThat(RoverDirectionalCommand.valueOf("FORWARD"), is(FORWARD));
-        assertThat(RoverDirectionalCommand.valueOf("BACKWARDS"), is(BACKWARD));
+        assertThat(RoverDirectionalCommand.valueOf("BACKWARD"), is(BACKWARD));
         assertThat(RoverDirectionalCommand.valueOf("TURN_LEFT"), is(TURN_LEFT));
         assertThat(RoverDirectionalCommand.valueOf("TURN_RIGHT"), is(TURN_RIGHT));
     }

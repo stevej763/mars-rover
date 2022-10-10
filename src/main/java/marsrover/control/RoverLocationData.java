@@ -37,4 +37,12 @@ public class RoverLocationData {
     public String toString() {
         return reflectionToString(this, SIMPLE_STYLE);
     }
+
+    public Integer getRoverXCoordinate() {
+        return roverCoordinates.getX();
+    }
+
+    public Integer getRoverYCoordinate() {
+        return roverCoordinates.getY();
+    }
 }

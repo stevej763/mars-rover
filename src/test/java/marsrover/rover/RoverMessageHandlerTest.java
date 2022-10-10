@@ -43,7 +43,7 @@ public class RoverMessageHandlerTest {
 
     @Test
     public void canReceiveReverseCommand() {
-        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(RoverCommand.BACKWARDS));
+        RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(RoverCommand.BACKWARD));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
         underTest.process(roverMessageDto);
@@ -54,9 +54,9 @@ public class RoverMessageHandlerTest {
     @Test
     public void canReceiveMultipleReverseCommands() {
         RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(
-                RoverCommand.BACKWARDS,
-                RoverCommand.BACKWARDS,
-                RoverCommand.BACKWARDS));
+                RoverCommand.BACKWARD,
+                RoverCommand.BACKWARD,
+                RoverCommand.BACKWARD));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
         underTest.process(roverMessageDto);
@@ -93,9 +93,9 @@ public class RoverMessageHandlerTest {
     public void canReceiveMixOfForwardAndReverseCommands() {
         RoverMessageDto roverMessageDto = new RoverMessageDto(List.of(
                 RoverCommand.FORWARD,
-                RoverCommand.BACKWARDS,
+                RoverCommand.BACKWARD,
                 RoverCommand.FORWARD,
-                RoverCommand.BACKWARDS));
+                RoverCommand.BACKWARD));
         RoverMessageHandler underTest = new RoverMessageHandler(rover);
 
         underTest.process(roverMessageDto);
