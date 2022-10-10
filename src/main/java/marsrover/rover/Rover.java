@@ -6,7 +6,7 @@ import marsrover.control.RoverLocationData;
 public class Rover {
 
     private final RoverLocationDataService roverLocationDataService;
-    private RoverMovementService roverMovementService;
+    private final RoverMovementService roverMovementService;
 
     public Rover(RoverLocationDataService roverLocationDataService, RoverMovementService roverMovementService) {
         this.roverLocationDataService = roverLocationDataService;
